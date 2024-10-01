@@ -25,13 +25,13 @@
   ],
   "author": "Mike Stotik <mikestotik@gmail.com>",
   "license": "ISC",
+  "dependencies": {
+    "socks": "^2.8.3",
+    "tunnel": "^0.0.6"
+  },
   "devDependencies": {
     "@types/node": "^22.7.4",
     "@types/tunnel": "^0.0.7",
     "typescript": "^5.6.2"
-  },
-  "dependencies": {
-    "socks": "^2.8.3",
-    "tunnel": "^0.0.6"
   }
 }
