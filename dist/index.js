@@ -14,7 +14,5 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ProxyChecker = void 0;
 __exportStar(require("./typings"), exports);
-var checker_1 = require("./checker");
-Object.defineProperty(exports, "ProxyChecker", { enumerable: true, get: function () { return checker_1.ProxyChecker; } });
+__exportStar(require("./checker"), exports);
