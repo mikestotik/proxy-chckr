@@ -365,7 +365,3 @@ For support or questions, please contact [mikestotik@gmail.com](mailto:mikestoti
 ## Acknowledgments
 
 - Thanks to the developers of the `socks` and `tunnel` libraries for making proxy handling easier in Node.js.
-
----
-
-**Note:** Replace `[2024]`, `Mike Stotik`, and `mikestotik@gmail.com` with your actual information. If you are publishing this package to npm, ensure that the `name`, `version`, `repository`, and other fields in your `package.json` are correctly set.
