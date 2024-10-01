@@ -4,6 +4,7 @@
   "description": "Library for checking proxy servers performance.",
   "main": "dist/proxy-checker.js",
   "types": "dist/proxy-checker.d.ts",
+  "homepage": "https://github.com/mikestotik/proxy-checker.git",
   "scripts": {
     "build": "tsc",
     "prepare": "npm run build"
