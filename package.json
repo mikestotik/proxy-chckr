@@ -23,7 +23,7 @@
     "socks4",
     "socks5"
   ],
-  "author": "Ваше Имя <ваш.email@example.com>",
+  "author": "Mike Stotik <mikestotik@gmail.com>",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^22.7.4",
