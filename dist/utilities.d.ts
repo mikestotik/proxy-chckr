@@ -1,6 +1,5 @@
 import { SocksClientOptions } from 'socks/typings/common/constants';
-import { ConnectionQuality } from './typings/enums';
-import { ProxyCheckerOptions, ProxyCheckerTimeoutOptions, ProxyOptions } from './typings/interfaces';
+import { ConnectionQuality, ProxyCheckerOptions, ProxyCheckerTimeoutOptions, ProxyOptions } from './typings';
 export declare function mergeOptions(options?: ProxyCheckerOptions): ProxyCheckerOptions;
 export declare function calculateLatencyStats(latencies: number[]): {
     latency: number;

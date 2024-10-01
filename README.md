@@ -25,7 +25,7 @@ npm install proxy-chckr
 Check an HTTP proxy with authentication:
 
 ```typescript
-import { Proxy, ProxyOptions, ProxyProtocol } from 'proxy-chckr';
+import { ProxyChecker, ProxyOptions, ProxyProtocol } from 'proxy-chckr';
 
 const options: ProxyOptions = {
   host: '45.93.15.173',
@@ -37,24 +37,24 @@ const options: ProxyOptions = {
   },
 };
 
-const proxy = new Proxy(options);
+const proxy = new ProxyChecker(options);
 
 (async () => {
   try {
     const result = await proxy.check();
-    console.log('Proxy Check Result:', result);
+    console.log('Check Result:', result);
   } catch (error) {
     console.error('Error checking proxy:', error);
   }
 })();
 ```
 
-### Example with Custom Checker Options
+### Example with Custom ProxyChecker Options
 
 Customize the proxy check with specific options:
 
 ```typescript
-import { Proxy, ProxyOptions, ProxyProtocol, ProxyCheckerOptions } from 'proxy-chckr';
+import { ProxyChecker, ProxyOptions, ProxyProtocol, ProxyCheckerOptions } from 'proxy-chckr';
 
 const options: ProxyOptions = {
   host: '203.0.113.45',
@@ -72,24 +72,24 @@ const checkerOptions: ProxyCheckerOptions = {
   },
 };
 
-const proxy = new Proxy(options);
+const proxy = new ProxyChecker(options);
 
 (async () => {
   try {
     const result = await proxy.check(checkerOptions);
-    console.log('Custom Proxy Check Result:', result);
+    console.log('Custom ProxyChecker Check Result:', result);
   } catch (error) {
     console.error('Error checking proxy:', error);
   }
 })();
 ```
 
-### Checking a SOCKS5 Proxy
+### Checking a SOCKS5
 
 Check a SOCKS5 proxy with authentication:
 
 ```typescript
-import { Proxy, ProxyOptions, ProxyProtocol } from 'proxy-chckr';
+import { ProxyChecker, ProxyOptions, ProxyProtocol } from 'proxy-chckr';
 
 const options: ProxyOptions = {
   host: '198.51.100.27',
@@ -101,12 +101,12 @@ const options: ProxyOptions = {
   },
 };
 
-const proxy = new Proxy(options);
+const proxy = new ProxyChecker(options);
 
 (async () => {
   try {
     const result = await proxy.check();
-    console.log('SOCKS5 Proxy Check Result:', result);
+    console.log('SOCKS5 Check Result:', result);
   } catch (error) {
     console.error('Error checking proxy:', error);
   }
@@ -118,7 +118,7 @@ const proxy = new Proxy(options);
 Check a list of proxies sequentially:
 
 ```typescript
-import { Proxy, ProxyOptions, ProxyProtocol } from 'proxy-chckr';
+import { ProxyChecker, ProxyOptions, ProxyProtocol } from 'proxy-chckr';
 
 const proxies: ProxyOptions[] = [
   {
@@ -144,10 +144,10 @@ const proxies: ProxyOptions[] = [
 
 (async () => {
   for (const proxyOptions of proxies) {
-    const proxy = new Proxy(proxyOptions);
+    const proxy = new ProxyChecker(proxyOptions);
     try {
       const result = await proxy.check();
-      console.log(`Proxy ${proxyOptions.host}:${proxyOptions.port} result:`, result);
+      console.log(`ProxyChecker ${proxyOptions.host}:${proxyOptions.port} result:`, result);
     } catch (error) {
       console.error(`Error checking proxy ${proxyOptions.host}:${proxyOptions.port}:`, error);
     }
@@ -155,12 +155,12 @@ const proxies: ProxyOptions[] = [
 })();
 ```
 
-### Using Proxy Without Authentication
+### Using ProxyChecker Without Authentication
 
 Check a proxy that does not require authentication:
 
 ```typescript
-import { Proxy, ProxyOptions, ProxyProtocol } from 'proxy-chckr';
+import { ProxyChecker, ProxyOptions, ProxyProtocol } from 'proxy-chckr';
 
 const options: ProxyOptions = {
   host: '192.0.2.10',
@@ -168,12 +168,12 @@ const options: ProxyOptions = {
   protocol: ProxyProtocol.HTTP,
 };
 
-const proxy = new Proxy(options);
+const proxy = new ProxyChecker(options);
 
 (async () => {
   try {
     const result = await proxy.check();
-    console.log('Proxy Check Result:', result);
+    console.log('ProxyChecker Check Result:', result);
   } catch (error) {
     console.error('Error checking proxy:', error);
   }
@@ -288,7 +288,7 @@ export interface ProxyCheckResult {
     - `latencyMin`: Minimum response latency in milliseconds.
     - `latencyMax`: Maximum response latency in milliseconds.
 
-### Class `Proxy`
+### Class `ProxyChecker`
 
 #### Constructor
 
@@ -296,9 +296,9 @@ export interface ProxyCheckResult {
 constructor(options: ProxyOptions)
 ```
 
-Creates a new instance of the `Proxy` class.
+Creates a new instance of the `ProxyChecker` class.
 
-- `options`: Proxy configuration options.
+- `options`: ProxyChecker configuration options.
 
 #### Methods
 

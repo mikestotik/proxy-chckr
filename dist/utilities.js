@@ -1,5 +1,4 @@
 "use strict";
-// utilities.ts
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     var desc = Object.getOwnPropertyDescriptor(m, k);
@@ -31,7 +30,7 @@ exports.createTunnelAgent = createTunnelAgent;
 exports.createSocksConnectionOptions = createSocksConnectionOptions;
 const tunnel = __importStar(require("tunnel"));
 const const_1 = require("./const");
-const enums_1 = require("./typings/enums");
+const typings_1 = require("./typings");
 function mergeOptions(options) {
     const defaultOptions = {
         url: const_1.DEFAULT_TEST_URL,
@@ -64,13 +63,13 @@ function calculateLatencyStats(latencies) {
 }
 function determineQuality(successfulAttempts, totalAttempts) {
     if (successfulAttempts === totalAttempts) {
-        return enums_1.ConnectionQuality.Stable;
+        return typings_1.ConnectionQuality.Stable;
     }
     else if (successfulAttempts > 0) {
-        return enums_1.ConnectionQuality.Unstable;
+        return typings_1.ConnectionQuality.Unstable;
     }
     else {
-        return enums_1.ConnectionQuality.None;
+        return typings_1.ConnectionQuality.None;
     }
 }
 function createTunnelAgent(options, isHttps) {
@@ -80,11 +79,11 @@ function createTunnelAgent(options, isHttps) {
         proxyAuth: options.auth ? `${options.auth.username}:${options.auth.password}` : undefined
     };
     switch (options.protocol) {
-        case enums_1.ProxyProtocol.HTTP:
+        case typings_1.ProxyProtocol.HTTP:
             return isHttps
                 ? tunnel.httpsOverHttp({ proxy: proxyConfig })
                 : tunnel.httpOverHttp({ proxy: proxyConfig });
-        case enums_1.ProxyProtocol.HTTPS:
+        case typings_1.ProxyProtocol.HTTPS:
             return isHttps
                 ? tunnel.httpsOverHttps({ proxy: proxyConfig })
                 : tunnel.httpOverHttps({ proxy: proxyConfig });
@@ -98,7 +97,7 @@ function createSocksConnectionOptions(options, urlObj, timeout) {
         proxy: {
             host: options.host,
             port: options.port,
-            type: options.protocol === enums_1.ProxyProtocol.SOCKS4 ? 4 : 5,
+            type: options.protocol === typings_1.ProxyProtocol.SOCKS4 ? 4 : 5,
             userId: options.auth ? options.auth.username : undefined,
             password: options.auth ? options.auth.password : undefined
         },

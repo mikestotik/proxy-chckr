@@ -21,7 +21,7 @@ import {
 } from './utilities';
 
 
-export class Proxy {
+export class ProxyChecker {
   private readonly options: ProxyOptions;
 
 
