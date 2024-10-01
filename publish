@@ -2,49 +2,41 @@
 
 # File: publish
 
-# Function to increment version number
-increment_version() {
-  local version=$1
-  local part=$2
-  IFS='.' read -r -a parts <<< "$version"
-  case $part in
-    1)
-      parts[0]=$((parts[0]+1))
-      parts[1]=0
-      parts[2]=0
-      ;;
-    2)
-      parts[1]=$((parts[1]+1))
-      parts[2]=0
-      ;;
-    3)
-      parts[2]=$((parts[2]+1))
-      ;;
-    *)
-      echo "Invalid option"
-      exit 1
-      ;;
-  esac
-  echo "${parts[0]}.${parts[1]}.${parts[2]}"
-}
+# Get the current version from package.json
+current_version=$(node -p "require('./package.json').version")
 
-# Get current version from package.json
-current_version=$(grep '"version"' package.json | sed -E 's/.*"([0-9]+\.[0-9]+\.[0-9]+)".*/\1/')
-
-echo "Current version is $current_version"
+echo "Current version: $current_version"
 echo "Which part of the version would you like to increment?"
 echo "1) Major"
 echo "2) Minor"
 echo "3) Patch"
 read -p "Enter 1, 2, or 3: " part
 
-# Increment version
-new_version=$(increment_version "$current_version" "$part")
-echo "New version will be $new_version"
+# Determine the type of version increment
+case $part in
+  1)
+    version_type="major"
+    ;;
+  2)
+    version_type="minor"
+    ;;
+  3)
+    version_type="patch"
+    ;;
+  *)
+    echo "Invalid selection"
+    exit 1
+    ;;
+esac
 
-# Update package.json with new version
-sed -i.bak "s/\"version\": \"$current_version\"/\"version\": \"$new_version\"/" package.json
-rm package.json.bak
+# Increment the version using npm version (without --no-git-tag-version)
+echo "Incrementing version..."
+new_version=$(npm version $version_type)
+
+if [ $? -ne 0 ]; then
+  echo "Failed to increment version. Aborting."
+  exit 1
+fi
 
 # Build the package
 echo "Building the package..."
@@ -64,15 +56,14 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
-# Commit and push to git
-echo "Committing changes to git..."
-git add .
-git commit -m "Bump version to $new_version"
+# Push changes and tags to git
+echo "Pushing changes to git..."
 git push
+git push --tags
 
 if [ $? -ne 0 ]; then
   echo "Git push failed."
   exit 1
 fi
 
-echo "Published version $new_version and pushed to git repository successfully."
+echo "Successfully published version $(node -p "require('./package.json').version") and pushed changes to git with tags."
