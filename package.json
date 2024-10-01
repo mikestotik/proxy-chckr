@@ -1,17 +1,17 @@
 {
-  "name": "@mss/proxy-checker",
+  "name": "proxy-chckr",
   "version": "1.0.0",
   "description": "Library for checking proxy servers performance.",
-  "main": "dist/proxy-checker.js",
-  "types": "dist/proxy-checker.d.ts",
-  "homepage": "https://github.com/mikestotik/proxy-checker.git",
+  "main": "dist/proxy-chckr.js",
+  "types": "dist/proxy-chckr.d.ts",
+  "homepage": "https://github.com/mikestotik/proxy-chckr.git",
   "scripts": {
     "build": "tsc",
     "prepare": "npm run build"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/mikestotik/proxy-checker.git"
+    "url": "https://github.com/mikestotik/proxy-chckr.git"
   },
   "keywords": [
     "proxy",

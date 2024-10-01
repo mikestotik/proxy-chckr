@@ -15,7 +15,7 @@ Library for Node.js to check the functionality of proxy servers. Supports HTTP, 
 Install the package using npm:
 
 ```bash
-npm install @mss/proxy-checker
+npm install proxy-chckr
 ```
 
 ## Usage
@@ -25,7 +25,7 @@ npm install @mss/proxy-checker
 Check an HTTP proxy with authentication:
 
 ```typescript
-import { Proxy, ProxyOptions, ProxyProtocol } from '@mss/proxy-checker';
+import { Proxy, ProxyOptions, ProxyProtocol } from 'proxy-chckr';
 
 const options: ProxyOptions = {
   host: '45.93.15.173',
@@ -54,7 +54,7 @@ const proxy = new Proxy(options);
 Customize the proxy check with specific options:
 
 ```typescript
-import { Proxy, ProxyOptions, ProxyProtocol, ProxyCheckerOptions } from '@mss/proxy-checker';
+import { Proxy, ProxyOptions, ProxyProtocol, ProxyCheckerOptions } from 'proxy-chckr';
 
 const options: ProxyOptions = {
   host: '203.0.113.45',
@@ -89,7 +89,7 @@ const proxy = new Proxy(options);
 Check a SOCKS5 proxy with authentication:
 
 ```typescript
-import { Proxy, ProxyOptions, ProxyProtocol } from '@mss/proxy-checker';
+import { Proxy, ProxyOptions, ProxyProtocol } from 'proxy-chckr';
 
 const options: ProxyOptions = {
   host: '198.51.100.27',
@@ -118,7 +118,7 @@ const proxy = new Proxy(options);
 Check a list of proxies sequentially:
 
 ```typescript
-import { Proxy, ProxyOptions, ProxyProtocol } from '@mss/proxy-checker';
+import { Proxy, ProxyOptions, ProxyProtocol } from 'proxy-chckr';
 
 const proxies: ProxyOptions[] = [
   {
@@ -160,7 +160,7 @@ const proxies: ProxyOptions[] = [
 Check a proxy that does not require authentication:
 
 ```typescript
-import { Proxy, ProxyOptions, ProxyProtocol } from '@mss/proxy-checker';
+import { Proxy, ProxyOptions, ProxyProtocol } from 'proxy-chckr';
 
 const options: ProxyOptions = {
   host: '192.0.2.10',
@@ -356,7 +356,7 @@ Contributions are welcome! Please follow these steps:
 
 ## Issues
 
-If you encounter any issues or have suggestions, please open an issue on the [GitHub repository](https://github.com/mikestotik/proxy-checker/issues).
+If you encounter any issues or have suggestions, please open an issue on the [GitHub repository](https://github.com/mikestotik/proxy-chckr/issues).
 
 ## Support
 
