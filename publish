@@ -2,6 +2,17 @@
 
 # File: publish
 
+# Function to check if the git working directory is clean
+check_git_clean() {
+  if [ -n "$(git status --porcelain)" ]; then
+    echo "Your Git working directory is not clean. Please commit or stash your changes before publishing."
+    exit 1
+  fi
+}
+
+# Check if git working directory is clean
+check_git_clean
+
 # Get the current version from package.json
 current_version=$(node -p "require('./package.json').version")
 
@@ -29,7 +40,7 @@ case $part in
     ;;
 esac
 
-# Increment the version using npm version (without --no-git-tag-version)
+# Increment the version using npm version
 echo "Incrementing version..."
 new_version=$(npm version $version_type)
 
@@ -58,8 +69,7 @@ fi
 
 # Push changes and tags to git
 echo "Pushing changes to git..."
-git push
-git push --tags
+git push --follow-tags
 
 if [ $? -ne 0 ]; then
   echo "Git push failed."
