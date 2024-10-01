@@ -1,6 +1,6 @@
 {
   "name": "proxy-chckr",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Library for checking proxy servers performance.",
   "main": "dist/proxy-chckr.js",
   "types": "dist/proxy-chckr.d.ts",
