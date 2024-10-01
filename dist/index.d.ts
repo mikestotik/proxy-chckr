@@ -1,2 +1,2 @@
 export * from './typings';
-export { Proxy } from './proxy';
+export { ProxyChecker } from './checker';

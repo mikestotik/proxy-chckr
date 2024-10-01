@@ -23,7 +23,7 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Proxy = void 0;
+exports.ProxyChecker = void 0;
 const http = __importStar(require("http"));
 const https = __importStar(require("https"));
 const socks_1 = require("socks");
@@ -31,7 +31,7 @@ const tls = __importStar(require("tls"));
 const const_1 = require("./const");
 const typings_1 = require("./typings");
 const utilities_1 = require("./utilities");
-class Proxy {
+class ProxyChecker {
     constructor(options) {
         this.options = options;
     }
@@ -187,4 +187,4 @@ class Proxy {
         });
     }
 }
-exports.Proxy = Proxy;
+exports.ProxyChecker = ProxyChecker;
